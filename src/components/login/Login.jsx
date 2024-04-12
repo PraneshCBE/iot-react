@@ -25,32 +25,30 @@ const [loader, setLoader] = useState(false);
         let response1; 
         let response2; 
         let response3;
+        const tokens={};
         try {
             response1 = await axios.post(enroll_url1, data);
+            if (response1.status === 200) {
+                tokens["HP"] = response1.data.token;
+            }
         } catch (error) {
-            response1 = error.response;
+            response1 = "Not Enrolled for HP";
         }
         try {
             response2 = await axios.post(enroll_url2, data);
+            if (response2.status === 200) {
+                tokens["Surv"] = response2.data.token;
+            }
         } catch (error) {
-            response2 = error.response;
+            response2 = "Not Enrolled for Surv";
         }
         try {
             response3 = await axios.post(enroll_url3, data);
+            if (response3.status === 200) {
+                tokens["Intelli"] = response3.data.token;
+            }
         } catch (error) {
-            response3 = error.response;
-        }
-        let tokens = {};
-        
-
-        if (response1.status === 200) {
-            tokens["HP"] = response1.data.token;
-        }
-        if (response2.status === 200) {
-            tokens["Surv"] = response2.data.token;
-        }
-        if (response3.status === 200) {
-            tokens["Intelli"] = response3.data.token;
+            response3 = "Not Enrolled for Intelli";
         }
         console.log(tokens);
         setLoader(false);
@@ -60,6 +58,8 @@ const [loader, setLoader] = useState(false);
         {
             setErrorMsg("");
             localStorage.setItem("isLogged", true);
+            localStorage.setItem("username", username);
+            localStorage.setItem("tokens", JSON.stringify(tokens));
             navigate("/", {state: {user: username, tokens: tokens}});
         }
     };
