@@ -1,14 +1,14 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
   }
 
 .loginbody{
     padding-left: 10%;
     background: url('../../assets/bg1.jpg') no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center; 
     display: flex;
     align-items: center;
     min-height: 100vh;

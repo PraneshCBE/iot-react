@@ -3,11 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from './Register.module.css';
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa6";
+import NavBar from "../dashboard/Navbar";
 import axios from "axios";
 
 const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [user, setUser] = useState("")
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,8 +23,9 @@ const Register = () => {
             navigate('/login', { replace: true });
             return 
         }
+        setUser(location.state.user)
         setTokens(location.state.tokens);
-    }, []);
+    }, [navigate]);
     const handleRegister = async (e) => {
         e.preventDefault();
         setErrorMsg("");
@@ -100,6 +103,8 @@ const Register = () => {
         }
     }
     return(
+        <>
+        <NavBar user={user} tokens={tokens} name="Register"/>
         <div className={styles.loginbody}>
         <div className={styles.wrapper}>
             <form onSubmit={handleRegister}>
@@ -130,6 +135,7 @@ const Register = () => {
             </form>
         </div>
         </div>
+        </>
     );
 }
 

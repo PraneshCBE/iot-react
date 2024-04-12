@@ -57,7 +57,7 @@ const [loader, setLoader] = useState(false);
         else 
         {
             setErrorMsg("");
-            navigate("/reg", {state: {user: username, tokens: tokens}});
+            navigate("/", {state: {user: username, tokens: tokens}});
         }
     };
 
