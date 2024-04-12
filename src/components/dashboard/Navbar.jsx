@@ -25,7 +25,7 @@ const MenuExampleInvertedSecondary = (props) => {
     }
   };
   return (
-    <Segment inverted>
+    <Segment inverted >
       <Menu inverted pointing secondary stackable icon fluid widths={10}>
         <MenuItem
           name='Home'
@@ -71,7 +71,7 @@ const MenuExampleInvertedSecondary = (props) => {
           position='right'
         >
           <Icon name='user'></Icon>
-          <span style={{ marginLeft: '10px' }}>Profile:{user}</span>
+          <span style={{ marginLeft: '10px' }}>Profile</span>
         </MenuItem>
       </Menu>
     </Segment>
