@@ -57,10 +57,7 @@ const [loader, setLoader] = useState(false);
         else 
         {
             setErrorMsg("");
-            localStorage.setItem("isLogged", true);
-            localStorage.setItem("username", username);
-            localStorage.setItem("tokens", JSON.stringify(tokens));
-            navigate("/", {state: {user: username, tokens: tokens}});
+            navigate("/reg", {state: {user: username, tokens: tokens}});
         }
     };
 
