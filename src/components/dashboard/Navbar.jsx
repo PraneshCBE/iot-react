@@ -7,7 +7,10 @@ export default class MenuExampleInvertedSecondary extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
   render() {
+    const { user } = this.props
+    console.log(user)
     const { activeItem } = this.state
+    const status = user === 'admin'?false:true;
     const url=process.env.REACT_APP_EXPLORER_URL;
     return (
       <Segment inverted>
@@ -40,6 +43,7 @@ export default class MenuExampleInvertedSecondary extends Component {
             <span style={{ marginLeft: '10px' }}>History</span>
           </MenuItem>
           <MenuItem
+            disabled = {status}
             name='Register'
             active={activeItem === 'Register'}
             onClick={this.handleItemClick}
@@ -56,7 +60,7 @@ export default class MenuExampleInvertedSecondary extends Component {
             position='right'
           >
             <Icon name='user'></Icon>
-            <span style={{ marginLeft: '10px' }}>Profile</span>
+            <span style={{ marginLeft: '10px' }}>Profile:{user}</span>
           </MenuItem>
         </Menu>
       </Segment>

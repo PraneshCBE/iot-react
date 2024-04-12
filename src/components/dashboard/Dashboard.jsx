@@ -24,7 +24,7 @@ const Dashboard = () => {
     return(
         <>
         <div>
-        <NavBar/>
+        <NavBar user={user}/>
             <h1>Dashboard</h1>
             <h2>Welcome {user}</h2>
             <h3>Here are your tokens:</h3>
