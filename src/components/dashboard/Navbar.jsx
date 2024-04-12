@@ -14,11 +14,12 @@ const MenuExampleInvertedSecondary = (props) => {
 
   const handleItemClick = (name) => {
     setActiveItem(name)
+    props.navFun(name)
     if (name === 'Home') {
       navigate('/', { state: { tokens: props.tokens, user:user } });
     }
     if (name === 'History') {
-      navigate('/history');
+      // navigate('/history');
     }
     if (name === 'Register') {
       navigate('/reg', { state: { tokens: props.tokens, user:user } });

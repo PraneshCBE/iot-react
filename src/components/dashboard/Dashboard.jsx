@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from './Navbar'
+import UsersMgmt from "../UsersMgmt";
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [tokens, setTokens] = useState([]);
     const [user, setUser] = useState("");
+    const [navSelected, setNavSelected] = useState("Home");
     useEffect(() => {
         if (!location.state) {
             navigate('/login', { replace: true });
@@ -17,19 +19,29 @@ const Dashboard = () => {
 
     }, []);
 
+ const changeNavSelected=(value)=> {
+        setNavSelected(value);
+    }
+
 
     return (
         <>
             <div>
-                <NavBar user={user} tokens={tokens} name="Home" />
-                <h1>Dashboard</h1>
-                <h2>Welcome {user}</h2>
-                <h3>Here are your tokens:</h3>
-                <ul>
-                    {Object.keys(tokens).map((key) => {
-                        return <li key={key}>{key}: {tokens[key]}</li>
-                    })}
-                </ul>
+                <NavBar user={user} tokens={tokens} name="Home" navFun={changeNavSelected}/>
+                {navSelected === "Home"? (
+                    <>
+                    <h1>Dashboard</h1>
+                    <h2>Welcome {user}</h2>
+                    <h3>Here are your tokens:</h3>
+                    <ul>
+                        {Object.keys(tokens).map((key) => {
+                            return <li key={key}>{key}: {tokens[key]}</li>
+                        })}
+                    </ul>
+                    </>
+                ):navSelected === "Users"?(
+                     <UsersMgmt ptokens={tokens} />
+                ):(<></>)}
             </div>
         </>
     );
