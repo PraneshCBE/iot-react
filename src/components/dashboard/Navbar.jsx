@@ -45,6 +45,9 @@ const MenuExampleInvertedSecondary = (props) => {
       navigate('/reg', { state: { tokens: props.tokens, user:user } });
     }
   };
+  const handleLogout = () => {
+    navigate('/login', {replace: true});
+  };
   return (
     <Segment inverted >
       <Menu inverted pointing secondary stackable icon fluid widths={10}>
@@ -114,7 +117,7 @@ const MenuExampleInvertedSecondary = (props) => {
             </CardContent>
             <CardContent extra>
             <div>
-            <Button animated='fade' negative>
+            <Button animated='fade' negative onClick={handleLogout}>
               <ButtonContent visible><Icon name='logout' /></ButtonContent>
               <ButtonContent hidden>Logout</ButtonContent>
             </Button>
