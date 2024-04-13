@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from './Navbar'
 import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
+import styles from "./Dashboard.module.css"
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -32,15 +33,10 @@ const Dashboard = () => {
                 {navSelected === "Home" ?
                     (
                         <>
-                            <h1>Dashboard (Under Development 🛠️ )</h1>
-                            <h2>Welcome {user}</h2>
-                            <h3>Here are your tokens:</h3>
-                            <ul>
-                                {Object.keys(tokens).map((key) => {
-                                    return <li key={key}>{key}: {tokens[key]}</li>
-                                })}
-                            </ul>
-                            <Grids></Grids>
+                                <div className={styles.centered}>
+                                    <Grids></Grids>
+                                </div>
+                            
                         </>
                     ) :
                     navSelected === "Users" ? (
