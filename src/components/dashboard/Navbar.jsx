@@ -6,7 +6,7 @@ import { RandomAvatar } from "react-random-avatars";
 import AccessList from './AccessList';
 
 
-const MenuExampleInvertedSecondary = (props) => {
+const Navbar = (props) => {
   const [activeItem, setActiveItem] = useState(props.name)
   const navigate = useNavigate();
   
@@ -132,4 +132,4 @@ const MenuExampleInvertedSecondary = (props) => {
   );
 }
 
-export default MenuExampleInvertedSecondary;
+export default Navbar;
