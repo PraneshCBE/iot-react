@@ -18,7 +18,8 @@ const MenuExampleInvertedSecondary = (props) => {
     if (props.navFun)
       props.navFun(name)
     if (name === 'Home') {
-      props.deviceFun("Home")
+      if (props.deviceFun)
+        props.deviceFun("Home")
       navigate('/', { state: { tokens: props.tokens, user:user } });
     }
     if (name === 'History') {
