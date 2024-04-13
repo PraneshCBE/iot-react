@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { GridRow, GridColumn, Grid, Segment, HeaderSubheader, HeaderContent, Header, Icon} from 'semantic-ui-react'
 
 const Grids = () => (
   <Grid relaxed centered columns={4} divided="vertically" stackable verticalAlign='middle' padded>
     <GridRow stretched>
       <GridColumn>
-        <Segment piled size='massive' placeholder>
+        <Segment piled size='massive' placeholder as={Link}>
                     <center>
                     <Header as='h2'>
                     <   Icon name='home' />
@@ -18,7 +19,7 @@ const Grids = () => (
             </Segment>
       </GridColumn>
       <GridColumn>
-      <Segment piled size='massive' placeholder>
+      <Segment piled size='massive' placeholder as={Link}>
                     <center>
                     <Header as='h2'>
                     <   Icon name='info' />
@@ -30,7 +31,7 @@ const Grids = () => (
                     </center>
             </Segment>      </GridColumn>
       <GridColumn>
-      <Segment piled size='massive' placeholder>
+      <Segment piled size='massive' placeholder as={Link}>
                     <center>
                     <Header as='h2'>
                     <   Icon name='video' />

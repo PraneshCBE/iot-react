@@ -1,6 +1,9 @@
 import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { MenuItem, Menu, Segment, Icon, Popup, Card, CardMeta, CardHeader, CardDescription, CardContent, Button, Image, ButtonContent } from 'semantic-ui-react'
+import { MenuItem, Menu, Segment, Icon, Popup, Card, CardMeta, CardHeader, CardDescription,
+   CardContent, Button, ButtonContent} from 'semantic-ui-react'
+import { RandomAvatar } from "react-random-avatars";
+import AccessList from './AccessList';
 
 
 const MenuExampleInvertedSecondary = (props) => {
@@ -11,8 +14,9 @@ const MenuExampleInvertedSecondary = (props) => {
   const userName = ""+user;
   console.log(user,props.name)
   const status = user === 'admin' ? false : true;
+  const type = user === 'admin' ? "Admin" : "Client"
   const url = process.env.REACT_APP_EXPLORER_URL;
-
+  const access = ["HomeAppliance","Surveillance"]
   const handleItemClick = (name) => {
     setActiveItem(name)
     if (props.navFun)
@@ -49,14 +53,6 @@ const MenuExampleInvertedSecondary = (props) => {
           <span style={{ marginLeft: '10px' }}>Explorer</span>
         </MenuItem>
         <MenuItem
-          name='History'
-          active={activeItem === 'History'}
-          onClick={()=>handleItemClick('History')}
-        >
-          <Icon name='history'></Icon>
-          <span style={{ marginLeft: '10px' }}>History</span>
-        </MenuItem>
-        <MenuItem
           disabled={status}
           name='Register'
           active={activeItem === 'Register'}
@@ -65,6 +61,15 @@ const MenuExampleInvertedSecondary = (props) => {
         >
           <Icon name='user'></Icon>
           <span style={{ marginLeft: '10px' }}>Register</span>
+        </MenuItem>
+        <MenuItem
+          name='Arch'
+          active={activeItem === 'Arch'}
+          onClick={()=>handleItemClick('Arch')}
+          key={4}
+  
+        >
+          <Icon name='sitemap'></Icon>
         </MenuItem>
         <Popup
           flowing
@@ -82,15 +87,15 @@ const MenuExampleInvertedSecondary = (props) => {
           }
           content={<Card>
             <CardContent>
-              <Image
-                floated='right'
-                size='mini'
-                src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-              />
+                <div style={{float:"right"}}>
+                  <RandomAvatar name={userName} size={40} />
+                </div>
               <CardHeader>{userName.toUpperCase()}</CardHeader>
-              <CardMeta>Client</CardMeta>
+              <CardMeta>{type}</CardMeta>
               <CardDescription>
-                Steve wants to add you to the group <strong>best friends</strong>
+                <b>Access:</b>
+                <br></br>
+                <AccessList access={access}></AccessList>
               </CardDescription>
             </CardContent>
             <CardContent extra>

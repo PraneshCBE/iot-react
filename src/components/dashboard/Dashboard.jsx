@@ -4,6 +4,9 @@ import NavBar from './Navbar'
 import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
 import styles from "./Dashboard.module.css"
+import DeviceList from "./DeviceList";
+
+const devices=["fan","light","AC","camera"]
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -36,7 +39,7 @@ const Dashboard = () => {
                                 <div className={styles.centered}>
                                     <Grids></Grids>
                                 </div>
-                            
+                                <DeviceList devices={devices} rows={Math.ceil(devices.length/3)}></DeviceList>
                         </>
                     ) :
                     navSelected === "Users" ? (
