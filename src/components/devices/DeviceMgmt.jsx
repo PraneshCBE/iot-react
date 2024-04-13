@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const DeviceMgmt = (props) => {
-    const [tokens, setTokens] = useState(props.xtokens);
+    const [tokens, setTokens] = useState(props.tokens);
     const [devices, setDevices] = useState([]);
     const [deviceIp, setDeviceIp] = useState("");
     const [deviceName, setDeviceName] = useState("");

@@ -1,12 +1,12 @@
 import React from 'react'
 import { GridRow, GridColumn, Grid, Segment, HeaderSubheader, HeaderContent, Header, Icon} from 'semantic-ui-react'
 
-const Grids = () => (
+const Grids = (props) => (
   <Grid relaxed centered columns={4} divided="vertically" stackable verticalAlign='middle' padded>
     <GridRow stretched>
-      <GridColumn>
-        <Segment piled size='massive' placeholder>
-                    <center>
+      <GridColumn >
+        <Segment piled size='massive' placeholder >
+                    <center onClick={()=>props.deviceFun("HP")}>
                     <Header as='h2'>
                     <   Icon name='home' />
                         <HeaderContent>
