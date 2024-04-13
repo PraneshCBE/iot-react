@@ -48,9 +48,6 @@ const Dashboard = () => {
                     navSelected === "History" ? (
                         <div><h1>Hello {user}, History Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
                     ) :
-                    navSelected === "Profile" ? (
-                        <div><h1>Hello {user}, Profile Page is under development 🛠️</h1><p>Comeback later for awesome Experience 🫣</p></div>
-                    ) :
                         (<></>)}
             </div>
         </>
