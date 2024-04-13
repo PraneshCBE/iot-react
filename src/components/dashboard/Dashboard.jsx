@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from './Navbar'
+import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
 
 const Dashboard = () => {
@@ -39,6 +40,7 @@ const Dashboard = () => {
                                     return <li key={key}>{key}: {tokens[key]}</li>
                                 })}
                             </ul>
+                            <Grids></Grids>
                         </>
                     ) :
                     navSelected === "Users" ? (
