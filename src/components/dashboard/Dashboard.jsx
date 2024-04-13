@@ -7,6 +7,8 @@ import styles from "./Dashboard.module.css"
 import DeviceList from "./DeviceList";
 import DeviceMgmt from "../devices/DeviceMgmt";
 
+
+
 const devices=["fan","light","AC","camera"]
 
 const Dashboard = () => {

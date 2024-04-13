@@ -16,7 +16,19 @@ const MenuExampleInvertedSecondary = (props) => {
   const status = user === 'admin' ? false : true;
   const type = user === 'admin' ? "Admin" : "Client"
   const url = process.env.REACT_APP_EXPLORER_URL;
-  const access = ["HomeAppliance","Surveillance"]
+  const access = [];
+  for (const key in props.tokens) {
+    if (key === "HP") {
+      access.push("HomeAppliance")
+    }
+    if (key === "Surv") {
+      access.push("Surveillance")
+    }
+    if (key === "Intelli") {
+      access.push("Intelli")
+    }
+  }
+
   const handleItemClick = (name) => {
     setActiveItem(name)
     if (props.navFun)
