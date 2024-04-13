@@ -4,7 +4,12 @@ import NavBar from './Navbar'
 import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
 import styles from "./Dashboard.module.css"
+import DeviceList from "./DeviceList";
 import DeviceMgmt from "../devices/DeviceMgmt";
+
+
+
+const devices=["fan","light","AC","camera"]
 
 const Dashboard = () => {
     const navigate = useNavigate();
