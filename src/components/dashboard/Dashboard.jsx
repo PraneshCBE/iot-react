@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from './Navbar'
 import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
+import styles from "./Dashboard.module.css"
 import DeviceMgmt from "../devices/DeviceMgmt";
 
 const Dashboard = () => {
@@ -42,7 +43,9 @@ const Dashboard = () => {
                                     return <li key={key}>{key}: {tokens[key]}</li>
                                 })}
                             </ul>
+                            <div className={styles.centered}>
                             <Grids deviceFun={setDashDevice}></Grids>
+                            </div>
                             { dashDevice!==""
                             ?(
                                 <DeviceMgmt xtokens={tokens} org={dashDevice} user={user}></DeviceMgmt>
@@ -51,7 +54,6 @@ const Dashboard = () => {
                             <></>
                             )
                             }
-                           
                         </>
                     ) :
                     navSelected === "History" ? (
@@ -62,9 +64,6 @@ const Dashboard = () => {
                     ) :
                     navSelected === "History1" ? (
                         <div><h1>Hello {user}, History Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
-                    ) :
-                    navSelected === "Profile" ? (
-                        <div><h1>Hello {user}, Profile Page is under development 🛠️</h1><p>Comeback later for awesome Experience 🫣</p></div>
                     ) :
                         (<></>)}
             </div>
