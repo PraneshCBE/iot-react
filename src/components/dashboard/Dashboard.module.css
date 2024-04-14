@@ -1,3 +1,6 @@
   .centered {
-    padding-top: 10%;
+    padding-top: 2%;
+  }
+  .iFrame{
+    width:max-content;
   }

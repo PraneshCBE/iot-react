@@ -33,7 +33,6 @@ const Register = () => {
             setErrorMsg("Passwords do not match");
             return;
         }
-        console.log(tokens)
         const data = {
             id: username,
             secret: password

@@ -12,7 +12,6 @@ const Navbar = (props) => {
   
   const user = props.user;
   const userName = ""+user;
-  console.log(user,props.name)
   const status = user === 'admin' ? false : true;
   const type = user === 'admin' ? "Admin" : "Client"
   const url = process.env.REACT_APP_EXPLORER_URL;
@@ -69,6 +68,22 @@ const Navbar = (props) => {
           <Icon loading name='compass outline'></Icon>
           <span style={{ marginLeft: '10px' }}>Explorer</span>
         </MenuItem>
+        <Popup  trigger={
+        <MenuItem
+          disabled={status}
+          name='Users'
+          active={activeItem === 'Users'}
+          onClick={()=>handleItemClick('Users')}
+        >
+          <Icon name='users'></Icon>
+          <span style={{ marginLeft: '10px' }}>Users</span>
+        </MenuItem>}
+        content="⚠️ Access only for Admin ⚠️ Show list of users and their detials"
+        on='hover'
+        size='mini'
+        ></Popup>
+        <Popup  trigger={
+
         <MenuItem
           disabled={status}
           name='Register'
@@ -76,18 +91,24 @@ const Navbar = (props) => {
           onClick={()=>handleItemClick('Register')}
           icon='profile'
         >
-          <Icon name='user'></Icon>
+          <Icon name='pencil'></Icon>
           <span style={{ marginLeft: '10px' }}>Register</span>
         </MenuItem>
+        }
+        content="⚠️ Access only for Admin ⚠️ Register new users"
+        on='hover'
+        size='mini'
+        ></Popup>
+        
         <MenuItem
           name='Arch'
           active={activeItem === 'Arch'}
           onClick={()=>handleItemClick('Arch')}
           key={4}
-  
         >
           <Icon name='sitemap'></Icon>
         </MenuItem>
+
         <Popup
           flowing
           tar
