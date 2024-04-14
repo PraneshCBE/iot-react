@@ -68,7 +68,7 @@ const UsersMgmt = (props) => {
     return (
         <div>
             <center>
-                <h1>List of Users</h1>
+                <h1 style={{marginTop:"20px", marginBottom:"20px"}}>List of Users</h1>
                 <br />
             </center>
             {
@@ -80,7 +80,7 @@ const UsersMgmt = (props) => {
                 ) : (<></>)
             }
             {loading ? <Loader active inline='centered' /> : (
-            <CardGroup centered>
+            <CardGroup centered stackable>
                 {Object.keys(users).map((user) => {
                     return (
                         <Card key={user}>
