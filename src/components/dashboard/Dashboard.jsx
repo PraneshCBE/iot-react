@@ -34,10 +34,15 @@ const Dashboard = () => {
     const changeDashDevice = (value) => {
         setDashDevice(value);
     }
+    const handleBackButton = ()=>{
+        setDashDevice("Home");
+        setNavSelected("Home");
+        
+    }
     return (
         <>
             <div>
-                <NavBar user={user} tokens={tokens} name="Home" navFun={changeNavSelected} deviceFun={changeDashDevice} />
+                <NavBar user={user} tokens={tokens} name="Home" navFun={changeNavSelected} deviceFun={changeDashDevice} activeIt={navSelected}/>
                 {navSelected === "Home" ?
                     (
                         dashDevice === "Home" ?
@@ -65,12 +70,12 @@ const Dashboard = () => {
                             ) :
                             (
                                 <>
-                                <Button onClick={() =>setDashDevice("Home")}> <Icon name="back" inverted />Go to Main Menu</Button>
+                                <Button onClick={() =>handleBackButton()}>Go to Main Menu</Button>
                                 <DeviceMgmt tokens={tokens} org={dashDevice} user={user}></DeviceMgmt>
                                 </>
                             )
                     ) :<>
-                    <Button onClick={() => navigate('/', { replace: true })}>Go to Main Menu</Button>
+                    <Button onClick={() => handleBackButton()}>Go to Main Menu</Button>
 
                     {navSelected === "Users" ? (
                         <UsersMgmt ptokens={tokens} />
@@ -78,10 +83,10 @@ const Dashboard = () => {
                         navSelected === "Explorer" ? (
                             <div><h1>Redirecting to Hyperledger Fabric Explorer 😁</h1><p>Please check the new tab opened!</p></div>
                         ) :
-                            navSelected === "History1" ? (
-                                <div><h1>Hello {user}, History Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
+                            navSelected === "Arch" ? (
+                                <div><h1>Hello {user}, Arch Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
                             ) :
-                                (<></>)}
+                                (<><h1>Something is Fishy 🦈 </h1></>)}
                                 </>
                 }
             </div>

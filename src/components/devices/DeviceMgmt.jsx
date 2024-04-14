@@ -73,12 +73,12 @@ const DeviceMgmt = (props) => {
         catch (error) {
             if (error.response) {
                 if (error.response.status === 403)
-                    setError("Token Expired, Please Login Again");
+                    setError("Token Expired, Please Login Again 🕒 (or) You don't have access here, Contact Admin or Pranesh 💨");
                 else
-                    setError(error.response.data.message)
+                    setWeakError(error.response.data.message)
             }
             else
-                setError(error.message)
+                setWeakError(error.message)
 
 
         }
@@ -115,7 +115,7 @@ const DeviceMgmt = (props) => {
         catch (error) {
             if (error.response) {
                 if (error.response.status === 403)
-                    setError("Token Expired, Please Login Again");
+                    setError("Token Expired, Please Login Again 🕒 (or) You don't have access here, Contact Admin or Pranesh 💨");
                 else
                 {
                     setWeakError(error.response.data.message)
@@ -159,7 +159,7 @@ const DeviceMgmt = (props) => {
             console.log(error);
             if (error.response) {
                 if (error.response.status === 403)
-                    setError("Token Expired, Please Login Again");
+                    setError("Token Expired, Please Login Again 🕒 (or) You don't have access here, Contact Admin or Pranesh 💨");
                 else
                     {
                         setError("")
@@ -204,12 +204,12 @@ const DeviceMgmt = (props) => {
             console.log(error);
             if (error.response) {
                 if (error.response.status === 403)
-                    setError("Token Expired, Please Login Again");
+                setError("Token Expired, Please Login Again 🕒 (or) You don't have access here, Contact Admin or Pranesh 💨");
                 else
-                    setError(error.response.data.message)
+                    setWeakError(error.response.data.message)
             }
             else
-                setError(error.message)
+                setWeakError(error.message)
 
         }
         setIsLoaded(true);
@@ -237,7 +237,7 @@ const DeviceMgmt = (props) => {
             console.log(error);
             if (error.response) {
                 if (error.response.status === 403)
-                    setError("Token Expired, Please Login Again");
+                    setError("Token Expired, Please Login Again 🕒 (or) You don't have access here, Contact Admin or Pranesh 💨");
             }
         }
         return [];

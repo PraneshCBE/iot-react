@@ -103,7 +103,7 @@ const Register = () => {
     }
     return(
         <>
-        <NavBar user={user} tokens={tokens} name="Register"/>
+        <NavBar user={user} tokens={tokens} name="Register" activeIt="Register"/>
         <div className={styles.loginbody}>
         <div className={styles.wrapper}>
             <form onSubmit={handleRegister}>

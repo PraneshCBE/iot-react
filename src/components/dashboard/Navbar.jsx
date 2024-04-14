@@ -1,13 +1,14 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { MenuItem, Menu, Segment, Icon, Popup, Card, CardMeta, CardHeader, CardDescription,
    CardContent, Button, ButtonContent} from 'semantic-ui-react'
 import { RandomAvatar } from "react-random-avatars";
 import AccessList from './AccessList';
+import { act } from 'react-dom/test-utils';
 
 
 const Navbar = (props) => {
-  const [activeItem, setActiveItem] = useState(props.name)
+  const [activeItem, setActiveItem] = useState(props.activeIt)
   const navigate = useNavigate();
   
   const user = props.user;
@@ -16,6 +17,10 @@ const Navbar = (props) => {
   const type = user === 'admin' ? "Admin" : "Client"
   const url = process.env.REACT_APP_EXPLORER_URL;
   const access = [];
+
+  useEffect(() => {
+    setActiveItem(props.activeIt);
+  }, [props.activeIt])
   for (const key in props.tokens) {
     if (key === "HP") {
       access.push("HomeAppliance")
@@ -29,21 +34,31 @@ const Navbar = (props) => {
   }
 
   const handleItemClick = (name) => {
-    setActiveItem(name)
+    setActiveItem(name);
     if (props.navFun)
-      props.navFun(name)
+      props.navFun(name);
     if (name === 'Home') {
       if (props.deviceFun)
-        props.deviceFun("Home")
-      navigate('/', { state: { tokens: props.tokens, user:user } });
+        props.deviceFun('Home');
+      else
+        navigate('/', { state: { user: user, tokens: props.tokens, landingPage:"Home" } });
     }
-    if (name === 'History') {
-      // navigate('/history');
+    if (name === "Users"){
+      if(props.deviceFun)
+        props.deviceFun('Users');
+      else
+        navigate('/', { state: { user: user, tokens: props.tokens, landingPage:"Users" } })
     }
-    if (name === 'Register') {
-      navigate('/reg', { state: { tokens: props.tokens, user:user } });
+    if (name === "Register")
+      navigate('/reg',{state : {user: user, tokens: props.tokens}});
+    if (name === "Arch"){
+      if (props.deviceFun)
+        props.deviceFun('Arch');
+      else
+        navigate('/', { state: { user: user, tokens: props.tokens, landingPage:"Arch" } });
     }
-  };
+  }
+
   const handleLogout = () => {
     navigate('/login', {replace: true});
   };
@@ -99,7 +114,7 @@ const Navbar = (props) => {
         on='hover'
         size='mini'
         ></Popup>
-        
+
         <MenuItem
           name='Arch'
           active={activeItem === 'Arch'}

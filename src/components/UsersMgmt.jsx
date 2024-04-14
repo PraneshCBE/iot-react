@@ -14,6 +14,7 @@ const UsersMgmt = (props) => {
     async function getUsers() {
         setLoading(true);
         setError("");
+        let errorCnt = 0;
         let url_hp = process.env.REACT_APP_HLF_APPLIANCE_IDENTITIES_URL;
         let url_surv = process.env.REACT_APP_HLF_SURVILLEANCE_IDENTITIES_URL;
         let url_intelli = process.env.REACT_APP_HLF_INTELLI_IDENTITIES_URL;
@@ -24,6 +25,7 @@ const UsersMgmt = (props) => {
             });
         } catch (error) {
             console.log(error);
+            errorCnt++;
         }
         try {
             await axios.get(url_surv, { headers: { Authorization: `Bearer ${tokens['Surv']}` } }).then((response) => {
@@ -31,6 +33,7 @@ const UsersMgmt = (props) => {
             });
         } catch (error) {
             console.log(error);
+            errorCnt++;
         }
         try {
             await axios.get(url_intelli, { headers: { Authorization: `Bearer ${tokens['Intelli']}` } }).then((response) => {
@@ -38,6 +41,12 @@ const UsersMgmt = (props) => {
             });
         } catch (error) {
             console.log(error);
+            errorCnt++;
+        }
+        if (errorCnt===3) {
+            setError("Failed to fetch Users! Possible Problems : 1. Token Expired [Login Again] 👨‍💻 2.Unauthorized Access [Run Away] 🤬 \n3. Server Error [Check Console and Contact Pranesh] 🥱.");
+            setLoading(false);
+            return;
         }
         let all_users = {}
         function addToList(user, orgName) {
