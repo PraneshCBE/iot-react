@@ -305,7 +305,7 @@ const DeviceMgmt = (props) => {
                                 </>
                             ) : (<></>)}
                                 <center>
-                                <h1 >Devices - {orgs[org]}</h1>
+                                <h1 style={{marginBottom:"30px"}}>Devices - {orgs[org]}</h1>
                                 </center>
                                 {isLoaded}
                                 <br/>
