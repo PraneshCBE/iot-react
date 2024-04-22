@@ -5,6 +5,7 @@ import Grids from "./grids";
 import UsersMgmt from "../UsersMgmt";
 import styles from "./Dashboard.module.css"
 import DeviceMgmt from "../devices/DeviceMgmt";
+import Arch from "./Arch";
 import { Button, Icon, Popup, Form, FormInput, FormButton, FormGroup, Message, MessageHeader } from "semantic-ui-react";
 import axios from "axios";
 
@@ -181,7 +182,9 @@ const Dashboard = () => {
                                 <div><h1>Redirecting to Hyperledger Fabric Explorer 😁</h1><p>Please check the new tab opened!</p></div>
                             ) :
                                 navSelected === "Arch" ? (
-                                    <div><h1>Hello {user}, Arch Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
+                                    
+                                    <Arch></Arch>
+                                    // <div><h1>Hello {user}, Arch Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
                                 ) :
                                     (<><h1>Something is Fishy 🦈 </h1></>)}
                     </>

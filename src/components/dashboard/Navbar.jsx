@@ -33,6 +33,7 @@ const Navbar = (props) => {
     }
   }
 
+  
   const handleItemClick = (name) => {
     setActiveItem(name);
     if (props.navFun)
