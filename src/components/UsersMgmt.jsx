@@ -44,7 +44,7 @@ const UsersMgmt = (props) => {
             errorCnt++;
         }
         if (errorCnt===3) {
-            setError("Failed to fetch Users! Possible Problems : 1. Token Expired [Login Again] 👨‍💻 2.Unauthorized Access [Run Away] 🤬 \n3. Server Error [Check Console and Contact Pranesh] 🥱.");
+            setError("Failed to fetch Users! Possible Problems : 1. Token Expired [Login Again] 👨‍💻 2.Unauthorized Access [Run Away] 🤬 \n3. Server Error [Check Console and Contact Admin] 🥱.");
             setLoading(false);
             return;
         }

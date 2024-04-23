@@ -6,8 +6,10 @@ import UsersMgmt from "../UsersMgmt";
 import styles from "./Dashboard.module.css"
 import DeviceMgmt from "../devices/DeviceMgmt";
 import Arch from "./Arch";
-import { Button, Icon, Popup, Form, FormInput, FormButton, FormGroup, Message, MessageHeader } from "semantic-ui-react";
+import Footer from "./Footer";
+import { Button, Icon, Popup, Form, FormInput, FormButton, FormGroup, Message, MessageHeader, Divider, Image, ImageGroup} from "semantic-ui-react";
 import axios from "axios";
+
 
 // Dummy Comment for Github PR
 const Dashboard = () => {
@@ -115,16 +117,16 @@ const Dashboard = () => {
                                                 <div style={{ float: "right", marginRight: "20px", marginTop: "-70px" }}>
                                                     <Popup
                                                         trigger={
-                                                            <Button content='Transaction Limit' icon='setting' labelPosition='left' onClick={()=>{setIsLimitChanged(false)}} />
+                                                            <Button content='Transaction Limit' icon='setting' labelPosition='left' onClick={() => { setIsLimitChanged(false) }} />
                                                         }
                                                         content={
                                                             <div>
                                                                 <h4>Set Transaction Limit per Device</h4>
-                                                                <Form 
-                                                                onSubmit={changeTransactionLimit} 
-                                                                loading={!isLoaded} 
-                                                                success={isLimitChanged}
-                                                                
+                                                                <Form
+                                                                    onSubmit={changeTransactionLimit}
+                                                                    loading={!isLoaded}
+                                                                    success={isLimitChanged}
+
                                                                 >
                                                                     <FormGroup>
                                                                         <FormInput value={limit} onChange={(e) => setLimit(e.target.value)} />
@@ -133,7 +135,7 @@ const Dashboard = () => {
                                                                         </div>
                                                                         {isLimitChanged ? <Message success>
                                                                             <MessageHeader>Success</MessageHeader>
-                                                                            </Message>:<></>}
+                                                                        </Message> : <></>}
                                                                     </FormGroup>
                                                                 </Form>
                                                             </div>
@@ -152,14 +154,16 @@ const Dashboard = () => {
                                         </div>
                                     </center>
                                     {
-                                        weakError||error ? (
+                                        weakError || error ? (
                                             <Message negative>
                                                 <MessageHeader>Error</MessageHeader>
                                                 <p>{weakError}{error}</p>
                                             </Message>
                                         ) : (<></>)
                                     }
+                                    <Footer></Footer>
                                 </div>
+                                
                             ) :
                             (
                                 <>
@@ -168,6 +172,7 @@ const Dashboard = () => {
                                     </div>
 
                                     <DeviceMgmt tokens={tokens} org={dashDevice} user={user}></DeviceMgmt>
+                                    
                                 </>
                             )
                     ) : <>
@@ -179,17 +184,17 @@ const Dashboard = () => {
                             <UsersMgmt ptokens={tokens} />
                         ) :
                             navSelected === "Explorer" ? (
-                                <div><h1>Redirecting to Hyperledger Fabric Explorer 😁</h1><p>Please check the new tab opened!</p></div>
+                                <div><center><h1>Redirecting to Hyperledger Fabric Explorer 😁</h1><p>Please check the new tab opened!</p></center></div>
+                                
                             ) :
                                 navSelected === "Arch" ? (
-                                    
+
                                     <Arch></Arch>
                                     // <div><h1>Hello {user}, Arch Page is under development 🛠️</h1><p> Comeback later for awesome Experience 🫣 </p></div>
                                 ) :
                                     (<><h1>Something is Fishy 🦈 </h1></>)}
                     </>
                 }
-
             </div>
         </>
     );
